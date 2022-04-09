@@ -1,0 +1,46 @@
+import random
+# including a certain words in the list
+list_1 = ['rainbow', 'computer', 'science', 'programming',
+          'python', 'mathematics', 'player', 'condition',
+          'reverse', 'water', 'board', 'geeks']
+word = random.choice(list_1)
+
+# creting a list of alphabets in the word
+list_of_words = []
+for i in word:
+    list_of_words.append(i)
+
+blank_dash = "-"*len(list_of_words)
+list_of_blank_dash = []
+for a in blank_dash:
+    list_of_blank_dash.append(a)
+
+turns = 10
+while turns > 0:
+    entered_word = input("enter an alphabet: ")
+
+    if entered_word in list_of_words:
+        index_of_word = [index for index, value in enumerate(list_of_words) if value == entered_word]
+
+        for b in index_of_word:
+            list_of_blank_dash[b] = entered_word
+
+        
+        joined_blank_dash = "".join(list_of_blank_dash)
+        print(joined_blank_dash)
+
+        
+        if joined_blank_dash==word:
+            print("You won")
+            break
+
+    
+    else:
+        print("Try again")
+        turns -= 1
+        print(f"remaining turns is {turns}")
+
+    if turns == 0:
+        print("You lost the game")
+        print(f"The word was: {word}")
+        break
